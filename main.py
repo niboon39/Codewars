@@ -1,31 +1,10 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
 def seven_ate9(str_):
-  b = []
-  for i in str_:
-    b.append(i)
-  ss = ''
-  prev = b[0]
-  curr = b[1]
-  k=1
-  if str_ == '7799':
-    return '7777'
-  for next in b[2:]:
-    if prev == '7' and curr == '9' and next == '7':
-      b.pop(k)
-    elif prev == '7' and curr == '7' and next == '9':
-      b.remove(next)
-      b.insert(k , '7')
-      b.insert(k+1 , '7')
-      b.remove('9')
-    prev = curr
-    curr = next
-    k+=1
-    if k > (len(b)-1):
-      k=len(b)-1
-  for j in range(len(b)) :
-    ss += b[j]
-  return ss
+    while '797' in str_:
+        str_ = str_.replace('797' , '77')
+    return str_
+
 
 # print(seven_ate9('79997'))
 
