@@ -83,6 +83,7 @@ def generate_shape(n):
 def nth_even(n):
   # pass
   return (n*2)-2
-test_case = [1 , 2  , 3 , 100 ,1298734] # , 3 , 100 , 1298734
+test_case = [1 , 2  , 3 , 100 ,1298734] 
 for i in test_case:
   print("result:",nth_even(i))
+
