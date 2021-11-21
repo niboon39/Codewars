@@ -141,7 +141,7 @@ def solution(string,markers):
 # 6 kyu
 
 # def is_prime(n):
-#   if n==1:return False
+#   if n<=1:return False
 #   factor = 0 
 #   for i in range(1 ,n+1):
 #     if n%i == 0 :factor +=1 
