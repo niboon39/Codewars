@@ -1,5 +1,8 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
+from typing import Sequence
+
+
 def seven_ate9(str_):
     while '797' in str_:
         str_ = str_.replace('797' , '77')
@@ -132,3 +135,30 @@ def solution(string,markers):
 # string = "apples, pears # and bananas\ngrapes\nbananas !apples"
 # markers = ["#", "!"]
 # print(solution(string , markers))
+
+
+# https://www.codewars.com/kata/5262119038c0985a5b00029f/train/python
+# 6 kyu
+
+# def is_prime(n):
+#   if n==1:return False
+#   factor = 0 
+#   for i in range(1 ,n+1):
+#     if n%i == 0 :factor +=1 
+
+#   if factor == 2 :
+#     return True
+#   return False 
+
+def is_prime(n):
+  if n == 1: return False 
+  i = 2 
+  while i*i <= n :
+    if n%i == 0 : return False 
+    i+=1 
+  return True
+
+
+# lst = [0 , 1 , 2 , 73 , 75 , -1]
+# for i in range(len(lst)):
+#   print(is_prime(lst[i]))
