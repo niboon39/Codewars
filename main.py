@@ -158,6 +158,28 @@ def is_prime(n):
     i+=1 
   return True
 
+# def is_prime(num):
+#     import math
+
+#     # There's only one even prime: 2
+#     if num < 2    : return False
+#     if num == 2   : return True
+#     if num %2 == 0: return False
+    
+#     """
+#     Property:
+#         Every number n that is not prime has at least one prime divisor p
+#         such 1 < p < square_root(n)
+#     """
+#     root = int(math.sqrt(num))
+    
+#     # We know there's only one even prime, so with that in mind 
+#     # we're going to iterate only over the odd numbers plus using the above property
+#     # the performance will be improved
+#     for i in range(3, root+1, 2):
+#         if num % i == 0: return False
+
+#     return True
 
 # lst = [0 , 1 , 2 , 73 , 75 , -1]
 # for i in range(len(lst)):
