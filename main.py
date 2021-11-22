@@ -184,3 +184,20 @@ def is_prime(n):
 # lst = [0 , 1 , 2 , 73 , 75 , -1]
 # for i in range(len(lst)):
 #   print(is_prime(lst[i]))
+
+
+import math as m 
+import random 
+def how_much_i_love_you(n):
+    # your code
+    array = ["I love you",
+            "a little",
+            "a lot",
+            "passionately",
+            "madly",
+            "not at all",]
+    return array[(n-1)%6]
+
+re = [7 , 3 , 6]
+for i in re : 
+  print(how_much_i_love_you(i))
