@@ -198,6 +198,20 @@ def how_much_i_love_you(n):
             "not at all",]
     return array[(n-1)%6]
 
-re = [7 , 3 , 6]
-for i in re : 
-  print(how_much_i_love_you(i))
+# re = [7 , 3 , 6]
+# for i in re : 
+#   print(how_much_i_love_you(i))
+
+
+ticks = [1 , 2 , 3 , 4 , 5 , 
+         6 , 7 , 8 , 9 , 10, 
+         11 , 12 , 13 ,  14, 
+         15 , 16 , 17 , 18 , 19 , 20 ]
+
+pwm = 212.5
+set_pwm = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
+for i in ticks : 
+  print(f"{i} : {(i/0.000785)}") 
+
+for j in set_pwm: 
+  print(f"{j} m/s : {pwm * j}")
