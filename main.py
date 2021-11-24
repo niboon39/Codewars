@@ -210,8 +210,42 @@ ticks = [1 , 2 , 3 , 4 , 5 ,
 
 pwm = 212.5
 set_pwm = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
-for i in ticks : 
-  print(f"{i} : {(i/0.000785)}") 
+# for i in ticks : 
+#   print(f"{i} : {(i/0.000785)}") 
 
-for j in set_pwm: 
-  print(f"{j} m/s : {pwm * j}")
+# for j in set_pwm: 
+#   print(f"{j} m/s : {pwm * j}")
+
+nn = 12.7 # max 41800 mah
+cu = 12.0 # ?? mah 
+
+result = (cu * 41800 )/ 12.7
+# print(result)
+
+
+def correct(s):
+  for i in s:
+    if i == '5':
+      s = s.replace('5' , 'S')
+    elif i == '0':
+      s = s.replace('0' , 'O')
+    elif i == '1':
+      s = s.replace('1' , 'I')
+  return s
+# f = ['L0ND0N' , 'DUBL1N' , '51NGAP0RE']
+# for i in f : 
+#   print(correct(i))
+
+def median(array):
+  size = len(array)
+  if size % 2 != 0 :
+        array.sort()
+        print(array)
+        return array[int(size/2)]
+  else:
+    sort = sorted(array)
+    even = len(sort) / 2
+    return (sort[int(even)] + sort[int(even)-1])/2
+
+odd = [797, 853, 23, 172, 833, 631, 740]
+print(median(odd))
