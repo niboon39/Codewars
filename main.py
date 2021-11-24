@@ -240,12 +240,12 @@ def median(array):
   size = len(array)
   if size % 2 != 0 :
         array.sort()
-        print(array)
+        # print(array)
         return array[int(size/2)]
   else:
     sort = sorted(array)
     even = len(sort) / 2
     return (sort[int(even)] + sort[int(even)-1])/2
 
-odd = [797, 853, 23, 172, 833, 631, 740]
-print(median(odd))
+# odd = [797, 853, 23, 172, 833, 631, 740]
+# print(median(odd))
