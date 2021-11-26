@@ -249,3 +249,25 @@ def median(array):
 
 # odd = [797, 853, 23, 172, 833, 631, 740]
 # print(median(odd))
+
+def single_digit(n):
+  buff = bin(n).replace('0b' , '')
+    
+
+# print(single_digit(123456789))
+
+
+def reverse_number(n):
+  s = str(n)
+  if s[0] == '-':
+    s = s.replace('-','')
+    return (-2*(int(s[::-1])) + int(s[::-1])) # Or method * -1 (LOL)
+  else:
+    return int(s[::-1])
+
+# print(reverse_number(123))
+
+
+def is_triangular(n):
+    x = 8.0*n+1.0
+    return x % x**0.5 == 0.0
