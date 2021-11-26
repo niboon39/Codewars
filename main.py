@@ -271,3 +271,13 @@ def reverse_number(n):
 def is_triangular(n):
     x = 8.0*n+1.0
     return x % x**0.5 == 0.0
+
+def halving_sum(n): 
+  # n + n/2 + n/4 + n/8 + ...
+  s = 0 
+  while n != 0 : 
+    s += n 
+    n =  n // 2 
+  return s 
+
+print(halving_sum(25))
