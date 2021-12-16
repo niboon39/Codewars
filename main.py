@@ -280,4 +280,16 @@ def halving_sum(n):
     n =  n // 2 
   return s 
 
-print(halving_sum(25))
+# print(halving_sum(25))
+# https://www.codewars.com/kata/5dd462a573ee6d0014ce715b/train/python
+def same_case(a, b): 
+  if (ord(a)>=65 and ord(a)<=90) and (ord(b)>=65 and ord(b)<=90): return 1    # A-Z == A-Z 
+  elif (ord(a)>=97 and ord(a)<=122) and (ord(b)>=97 and ord(b)<=122): return 1  # a-z == a-z
+  elif (ord(a) >= 65 and ord(a)<=90) and (ord(b)>=97 and ord(b)<=122) : return 0   # A-Z != a-z
+  elif (ord(b) >= 65 and ord(b)<=90) and (ord(a)>=97 and ord(a)<=122) : return 0 # a-z != A-Z
+  elif (type(a) and type(b) ) != type(str) : return -1 
+  elif ((ord(a)<65 and ord(a)>122) or (ord(b)<65 and ord(b)>90)):return -1
+  elif ((ord(b)<65 and ord(b)>122) or (ord(a)<65 and ord(a)>90)):return -1
+  
+
+print(same_case('H',':'))
