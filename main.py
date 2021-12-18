@@ -292,4 +292,36 @@ def same_case(a, b):
   elif ((ord(b)<65 and ord(b)>122) or (ord(a)<65 and ord(a)>90)):return -1
   
 
-print(same_case('H',':'))
+# print(same_case('H',':'))
+
+# a = np.arange(6).reshape((2,3))
+# np.reshape(a,(3,-1))
+# print(a)
+
+# p = True 
+# q = False 
+
+# if p ^ q :
+#   print("k")
+
+def fibonacci(n):
+    if n == 1 or n == 2:
+        return 1 
+    else:
+        return (fibonacci(n-1) + fibonacci(n-2))
+
+# a = range(3,8)
+# print(list(map(lambda x : fibonacci(x+1) , a )))
+
+import multiprocessing as mp
+import numpy as np 
+
+def f(a,b):
+  print(np.matmul(a,b))
+  # print(a+b)
+
+if __name__ == '__main__':
+  a = np.array([[i for i in range(10)] for _ in range(10)])
+  b = np.array([[i*2 for i in range(10)] for _ in range(10)])
+  p = mp.Process(target = f , args=(a,b))
+  p.start()
