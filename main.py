@@ -320,8 +320,38 @@ def f(a,b):
   print(np.matmul(a,b))
   # print(a+b)
 
-if __name__ == '__main__':
-  a = np.array([[i for i in range(10)] for _ in range(10)])
-  b = np.array([[i*2 for i in range(10)] for _ in range(10)])
-  p = mp.Process(target = f , args=(a,b))
-  p.start()
+# if __name__ == '__main__':
+#   a = np.array([[i for i in range(10)] for _ in range(10)])
+#   b = np.array([[i*2 for i in range(10)] for _ in range(10)])
+#   p = mp.Process(target = f , args=(a,b))
+#   p.start()
+
+
+def final_grade(exam, projects):
+    if exam > 90 or projects  > 10:return 100 
+    elif exam > 75 and projects >= 5 : return 90 
+    elif exam > 50 and projects >= 2 : return 75 
+    else: return 0 
+
+
+def binary_array_to_number(arr):
+    count = 0 
+    sum = 0
+    bit=[1,2,4,8,16,32,64,128]
+    for i in range(len(arr)-1 , -1 , -1):
+      # print(arr[i])
+      if arr[i] == 1 :
+        # print("Bit count : ",bit[count])
+        sum+=bit[count]
+      count+=1 
+    return sum 
+
+  # s = 0
+  # for i in arr:
+  #   s=s*2 +i 
+  # return s 
+
+# print(binary_array_to_number([1,1,1,0,1]))
+
+def ice_brick_volume(radius, bottle_length, rim_length):
+    return 2*(radius**2) * (bottle_length - rim_length)
