@@ -355,3 +355,17 @@ def binary_array_to_number(arr):
 
 def ice_brick_volume(radius, bottle_length, rim_length):
     return 2*(radius**2) * (bottle_length - rim_length)
+
+
+
+def calculate(num1, op, num2): 
+    # your code here
+    if op == '+': return num1 + num2
+    elif op == '-' :return num1 - num2 
+    elif op == '*' :return num1 * num2 
+    elif op == '/' : 
+      if num1 == 0 or num2 == 0 : return None
+      return num1 / num2  
+    else:return None
+
+
