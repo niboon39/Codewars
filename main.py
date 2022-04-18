@@ -1,5 +1,6 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
+from operator import index, ne
 from typing import Sequence
 
 
@@ -369,3 +370,150 @@ def calculate(num1, op, num2):
     else:return None
 
 
+import math as m 
+arr = [4, 3, 9, 7, 2, 1 ]
+def square_or_square_root(arr):
+  new_arr = []
+  for i in range(len(arr)):
+    if m.ceil(m.sqrt(arr[i])) == m.floor(m.sqrt(arr[i])):
+      new_arr.append(int(arr[i]**0.5))
+    else:
+      new_arr.append(arr[i]**2)
+      
+  return new_arr
+
+# print(square_or_square_root(arr))
+
+
+s = "Look mom, no hands"
+h = "4c6f6f6b206d6f6d2c206e6f2068616e6473"
+
+bytes_obj = bytes.fromhex(h)
+ascii_str = bytes_obj.decode("ASCII")
+# print(ascii_str)
+
+ascii_hex = ""
+for i in s:
+  ascii_hex+= hex(ord(i)).replace("0x" , "")
+
+# print(ascii_hex)
+
+
+class Converter():
+  @staticmethod
+  def to_ascii(h):
+      #your code here
+      bytes_obj = bytes.fromhex(h)
+      return bytes_obj.decode("ASCII")
+  @staticmethod
+  def to_hex(s):
+      #your code here
+      ascii_hex = ""
+      for i in s:
+          ascii_hex+= hex(ord(i)).replace("0x" , "")
+      return ascii_hex
+
+num = [ 1, 1, 1, 2, 1, 1 ]
+
+def find_uniq(arr):
+  buff = [] 
+  for i in arr :
+    if i not in buff : 
+      buff.append(i)
+  # print(buff)
+  buff2=[]
+  a = 0 
+  for i in range(len(buff)) : 
+    for j in arr: 
+      if buff[i] == j : 
+        a+=1
+    buff2.append(a)
+    a = 0 
+  # print(buff2)
+
+  element_list = buff2.index(min(buff2))
+  #print(buff[element_list])
+  return buff[element_list]
+# print(find_uniq(num))
+
+list_str = [ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]
+list_str_2 = [ 'abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba' ]
+list_str_3 = [ '', '', '', 'a', '', '' ]
+arr = ['0x1' , '0x2']
+
+def find_u (arr):
+  buff = []
+  index_ele = 0 
+  if (arr[0])[0:2] == '0x':
+    index_ele +=2
+  # print(index_ele)
+  for i in range(len(arr)):
+    if arr[i] == '':
+      arr[i] = "buff"
+    buff.append((arr[i])[index_ele])
+  # print(buff)
+  # print(arr)
+  # Check 
+  sbuff = list(set(buff))
+  # print(sbuff)
+  c = []
+  a = 0 
+  for j in range(len(sbuff)):
+    for k in range(len(arr)):
+      if sbuff[j] == (arr[k])[index_ele]:
+        a+=1 
+    c.append(a)
+    a = 0 
+  element_list = c.index(min(c))
+  # print(element_list)
+  s= ""
+  for e in arr:
+    if sbuff[element_list] == e[index_ele]:
+      s+=e
+      # print(e)
+  return s
+
+# print(find_u(list_str))
+
+# def int_to_negabinary(i):
+#     ds = []
+#     while i != 0:
+#         ds.append(i & 1)
+#         i = -(i >> 1)
+#     return ''.join(str(d) for d in reversed(ds)) if ds else '0'
+    
+# def negabinary_to_int(s):
+#     i = 0
+#     for c in s:
+#         i = -(i << 1) + int(c)
+#     return i
+
+
+
+def int_to_negabinary(i):
+  return bin((i+0xAAAAAAAA)^0xAAAAAAAA).replace("0b","")
+# print(int_to_negabinary(4587))
+
+def negabinary_to_int(s):
+  # base = [1 , -2 , 4 , -8 , 16 , -32 , 64 , -128 , 256 , -512 , 1024 , -2048 , 4096 , -8192]
+  base_size = [1] 
+  size = len(s) -1
+  neg_to_int = 0 
+  base = 1 
+  for i in range(len(s)):
+    if i %2 == 0 :
+      base *= -2
+    else:
+      base *= -2 
+    base_size.append(base)
+  # print(base_size)
+  for j in range(len(s)):
+    if s[j] == '1':
+      neg_to_int += base_size[size]
+      # print(neg_to_int , end=" ")
+    size -=1
+  return neg_to_int
+
+# print(negabinary_to_int('1011000111111'))
+
+  
