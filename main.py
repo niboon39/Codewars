@@ -1,6 +1,7 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
 from operator import index, ne
+from re import I
 from typing import Sequence
 
 
@@ -516,4 +517,62 @@ def negabinary_to_int(s):
 
 # print(negabinary_to_int('1011000111111'))
 
-  
+
+
+def fibonacci (n):
+  f = []
+  for i in range(n+1):
+    f.append(i)
+  # print(f)
+  fn = [] 
+  sfn = []
+  for i in range(len(f)):
+    if i == 0 :
+      fn.append(0)
+    elif i == 1 : 
+      fn.append(1)
+      sfn.append("1-st Fibo")
+    elif i == 2 : 
+      fn.append(1) 
+      sfn.append("2-nd Fibo")
+    else:
+      fn.append(fn[i-1] + fn[i-2])
+      if i ==3 :
+        sfn.append("3-rd Fibo")
+      else:
+        sfn.append(f"{i}-th Fibo")
+
+    #   print(fn[i-1] , fn[i-2] , fn[i-1]+fn[i-2])
+    # print(fn,i)
+  return fn[n]
+
+print(fibonacci(100))
+
+def nth_fib (n):
+  f = []
+  for i in range(n+1):
+    f.append(i)
+  # print(f)
+  fn = [] 
+  sfn = []
+  for i in range(len(f)):
+    if i == 0 :
+      fn.append(0)
+      sfn.append("1-st Fibo")
+    elif i == 1 : 
+      fn.append(1)
+      sfn.append("2-nd Fibo")
+    elif i == 2 : 
+      fn.append(1) 
+      sfn.append("3-rd Fibo")
+    else:
+      fn.append(fn[i-1] + fn[i-2])
+      sfn.append(f"{i}-th Fibo")
+
+    #   print(fn[i-1] , fn[i-2] , fn[i-1]+fn[i-2])
+    # print(fn,i)
+  element = sfn.index(sfn[n-1])
+  return fn[element]
+
+print(nth_fib(7))
+
