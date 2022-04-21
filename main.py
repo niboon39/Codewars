@@ -1,9 +1,6 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
 from operator import index, ne
-from re import I
-from typing import Sequence
-
 
 def seven_ate9(str_):
     while '797' in str_:
