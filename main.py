@@ -543,7 +543,7 @@ def fibonacci (n):
     # print(fn,i)
   return fn[n]
 
-print(fibonacci(100))
+# print(fibonacci(100))
 
 def nth_fib (n):
   f = []
@@ -570,6 +570,22 @@ def nth_fib (n):
     # print(fn,i)
   element = sfn.index(sfn[n-1])
   return fn[element]
+# print(nth_fib(7))
 
-print(nth_fib(7))
 
+''' No library '''
+
+def bin_to_decimal (n_str):
+  # Gen binary
+  # arr_bin = []
+  # for i in range(len(n_str)):
+  #   arr_bin.append(2**i)
+  # print(arr_bin)
+  result = 0 
+  for lst_bin in range(len(n_str)):
+    if n_str[::-1][lst_bin] == '1':
+      # result+= arr_bin[lst_bin]
+      result+= 2**lst_bin
+  return result
+
+print(bin_to_decimal("1001001"))
