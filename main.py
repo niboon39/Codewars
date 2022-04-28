@@ -357,7 +357,7 @@ def ice_brick_volume(radius, bottle_length, rim_length):
 
 
 
-def calculate(num1, op, num2): 
+def calculate2(num1, op, num2): 
     # your code here
     if op == '+': return num1 + num2
     elif op == '-' :return num1 - num2 
@@ -588,4 +588,28 @@ def bin_to_decimal (n_str):
       result+= 2**lst_bin
   return result
 
-print(bin_to_decimal("1001001"))
+# print(bin_to_decimal("1001001"))
+
+# import operator 
+# def calculate(s):
+#   ops = {"+" : operator.add ,
+#          "-" : operator.sub}
+
+#   # print(ops["+"](1,1))
+  
+
+# print(calculate(s=1))
+
+def digitize2(n):
+    n = str(n)[::-1]
+    ans = []
+    for i in range(len(n)):
+      ans.append(int(n[i]))
+    return ans
+
+
+def rgb(r, g, b):
+    r , g , b = str(hex(r)) , str(hex(g)) , str(hex(b))
+    return (r + g + b).replace("0x", "")
+
+print(rgb(1 , 2 , 3))
