@@ -613,3 +613,19 @@ def rgb(r, g, b):
     return (r + g + b).replace("0x", "")
 
 print(rgb(1 , 2 , 3))
+
+def count_positives_sum_negatives(arr):
+    lst_positive = []
+    lst_negative = []
+    size = len(arr)
+    for i in range(len(arr)):
+      if arr[i] <= 0 :
+        lst_negative.append(arr[i])
+      else:
+        lst_positive.append(arr[i])
+    if  arr == []:
+      return [] 
+    else:
+      return [len(lst_positive) , sum(lst_negative)]
+
+# print(count_positives_sum_negatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
