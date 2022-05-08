@@ -612,7 +612,7 @@ def rgb(r, g, b):
     r , g , b = str(hex(r)) , str(hex(g)) , str(hex(b))
     return (r + g + b).replace("0x", "")
 
-print(rgb(1 , 2 , 3))
+# print(rgb(1 , 2 , 3))
 
 def count_positives_sum_negatives(arr):
     lst_positive = []
@@ -629,3 +629,12 @@ def count_positives_sum_negatives(arr):
       return [len(lst_positive) , sum(lst_negative)]
 
 # print(count_positives_sum_negatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
+
+#https://www.codewars.com/kata/5813d19765d81c592200001a
+def dont_give_me_five(start,end):
+  range_num = [ num for num in range(start , end+1 , 1)]
+  print(buff) 
+  
+  return len(buff)
+
+print(dont_give_me_five(start=50, end=75))
