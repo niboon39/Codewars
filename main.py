@@ -632,9 +632,15 @@ def count_positives_sum_negatives(arr):
 
 #https://www.codewars.com/kata/5813d19765d81c592200001a
 def dont_give_me_five(start,end):
-  range_num = [ num for num in range(start , end+1 , 1)]
-  print(buff) 
-  
-  return len(buff)
+  range_num = [ str(num) for num in range(start , end+1 , 1)]
+  print(range_num) 
+  new_arr = []
+  for i in range(len(range_num)):
+    if '5' in range_num[i]:
+      pass 
+    else:
+      new_arr.append(range_num[i])
+  print(new_arr)
+  return len(new_arr)
 
-print(dont_give_me_five(start=50, end=75)) # update
+print(dont_give_me_five(start=1, end=9)) 
