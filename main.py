@@ -517,9 +517,10 @@ def negabinary_to_int(s):
 
 
 def fibonacci (n):
-  f = []
-  for i in range(n+1):
-    f.append(i)
+  f = [i for i in range(n+1)]
+  # f= [] 
+  # for i in range(n+1):
+  #   f.append(i)
   # print(f)
   fn = [] 
   sfn = []
@@ -528,22 +529,22 @@ def fibonacci (n):
       fn.append(0)
     elif i == 1 : 
       fn.append(1)
-      sfn.append("1-st Fibo")
+      # sfn.append("1-st Fibo")
     elif i == 2 : 
       fn.append(1) 
-      sfn.append("2-nd Fibo")
+      # sfn.append("2-nd Fibo")
     else:
       fn.append(fn[i-1] + fn[i-2])
-      if i ==3 :
-        sfn.append("3-rd Fibo")
-      else:
-        sfn.append(f"{i}-th Fibo")
+      # if i ==3 :
+      #   sfn.append("3-rd Fibo")
+      # else:
+      #   sfn.append(f"{i}-th Fibo")
 
     #   print(fn[i-1] , fn[i-2] , fn[i-1]+fn[i-2])
     # print(fn,i)
   return fn[n]
 
-# print(fibonacci(100))
+print(fibonacci(10))
 
 def nth_fib (n):
   f = []
@@ -633,14 +634,14 @@ def count_positives_sum_negatives(arr):
 #https://www.codewars.com/kata/5813d19765d81c592200001a
 def dont_give_me_five(start,end):
   range_num = [ str(num) for num in range(start , end+1 , 1)]
-  print(range_num) 
+  print("Total numbers : ",range_num) 
   new_arr = []
   for i in range(len(range_num)):
     if '5' in range_num[i]:
       pass 
     else:
       new_arr.append(range_num[i])
-  print(new_arr)
+  print("Remove 5 : " ,new_arr)
   return len(new_arr)
 
-print(dont_give_me_five(start=1, end=9)) 
+# print(dont_give_me_five(start=1, end=9)) 
