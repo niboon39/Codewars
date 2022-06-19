@@ -635,3 +635,15 @@ class Vector :
 
     def equals(self , v ):
         return self.lst_vec == v.lst_vec 
+
+
+# a = Vector([1,2,3])
+# b = Vector([3,4,5])
+# c = Vector([5,6,7,8])
+# print(a.add(b).show_vector())
+# print( a.add(b).equals(Vector([4,6,8])) )
+# print(a.subtract(b).show_vector())
+# print(a.dot(b))
+# print(a.norm())
+# print((a.toString() == '(1,2,3)'))
+# print(c.toString())
