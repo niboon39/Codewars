@@ -357,7 +357,7 @@ def ice_brick_volume(radius, bottle_length, rim_length):
 
 
 
-def calculate(num1, op, num2): 
+def calculate2(num1, op, num2): 
     # your code here
     if op == '+': return num1 + num2
     elif op == '-' :return num1 - num2 
@@ -517,9 +517,10 @@ def negabinary_to_int(s):
 
 
 def fibonacci (n):
-  f = []
-  for i in range(n+1):
-    f.append(i)
+  f = [i for i in range(n+1)]
+  # f= [] 
+  # for i in range(n+1):
+  #   f.append(i)
   # print(f)
   fn = [] 
   sfn = []
@@ -528,22 +529,22 @@ def fibonacci (n):
       fn.append(0)
     elif i == 1 : 
       fn.append(1)
-      sfn.append("1-st Fibo")
+      # sfn.append("1-st Fibo")
     elif i == 2 : 
       fn.append(1) 
-      sfn.append("2-nd Fibo")
+      # sfn.append("2-nd Fibo")
     else:
       fn.append(fn[i-1] + fn[i-2])
-      if i ==3 :
-        sfn.append("3-rd Fibo")
-      else:
-        sfn.append(f"{i}-th Fibo")
+      # if i ==3 :
+      #   sfn.append("3-rd Fibo")
+      # else:
+      #   sfn.append(f"{i}-th Fibo")
 
     #   print(fn[i-1] , fn[i-2] , fn[i-1]+fn[i-2])
     # print(fn,i)
   return fn[n]
 
-print(fibonacci(100))
+print(fibonacci(10))
 
 def nth_fib (n):
   f = []
@@ -570,9 +571,78 @@ def nth_fib (n):
     # print(fn,i)
   element = sfn.index(sfn[n-1])
   return fn[element]
+# print(nth_fib(7))
 
-print(nth_fib(7))
 
+''' No library '''
+
+def bin_to_decimal (n_str):
+  # Gen binary
+  # arr_bin = []
+  # for i in range(len(n_str)):
+  #   arr_bin.append(2**i)
+  # print(arr_bin)
+  result = 0 
+  for lst_bin in range(len(n_str)):
+    if n_str[::-1][lst_bin] == '1':
+      # result+= arr_bin[lst_bin]
+      result+= 2**lst_bin
+  return result
+
+# print(bin_to_decimal("1001001"))
+
+# import operator 
+# def calculate(s):
+#   ops = {"+" : operator.add ,
+#          "-" : operator.sub}
+
+#   # print(ops["+"](1,1))
+  
+
+# print(calculate(s=1))
+
+def digitize2(n):
+    n = str(n)[::-1]
+    ans = []
+    for i in range(len(n)):
+      ans.append(int(n[i]))
+    return ans
+
+
+def rgb(r, g, b):
+    r , g , b = str(hex(r)) , str(hex(g)) , str(hex(b))
+    return (r + g + b).replace("0x", "")
+
+# print(rgb(1 , 2 , 3))
+
+def count_positives_sum_negatives(arr):
+    lst_positive = []
+    lst_negative = []
+    size = len(arr)
+    for i in range(len(arr)):
+      if arr[i] <= 0 :
+        lst_negative.append(arr[i])
+      else:
+        lst_positive.append(arr[i])
+    if  arr == []:
+      return [] 
+    else:
+      return [len(lst_positive) , sum(lst_negative)]
+
+# print(count_positives_sum_negatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
+
+#https://www.codewars.com/kata/5813d19765d81c592200001a
+def dont_give_me_five(start,end):
+  range_num = [ str(num) for num in range(start , end+1 , 1)]
+  print("Total numbers : ",range_num) 
+  new_arr = []
+  for i in range(len(range_num)):
+    if '5' in range_num[i]:
+      pass 
+    else:
+      new_arr.append(range_num[i])
+  print("Remove 5 : " ,new_arr)
+  return len(new_arr)
 
 class Vector : 
     def __init__(self , lst_vec):
@@ -647,3 +717,5 @@ class Vector :
 # print(a.norm())
 # print((a.toString() == '(1,2,3)'))
 # print(c.toString())
+# print(dont_give_me_five(start=1, end=9)) 
+
