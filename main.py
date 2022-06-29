@@ -1,5 +1,6 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
+from cgi import test
 from operator import index, ne
 
 def seven_ate9(str_):
@@ -719,3 +720,26 @@ class Vector :
 # print(c.toString())
 # print(dont_give_me_five(start=1, end=9)) 
 
+
+def is_square(n):
+  if  n < 0  : return False 
+  elif n == 0 : return True 
+  else:
+    n_2 = n**0.5 
+    buff_n = str(n_2)
+    sq =""
+    for i in buff_n:
+      if i == '.':
+        break 
+      else:
+        sq+=i 
+    print(f"Num : {n} , square : {sq}")
+    if n_2 == int(sq) : 
+      return True 
+    else:
+      return False
+# print(is_square(26))
+
+test_case = [-1 , 0 , 3 , 4 , 25 , 26]
+for i in range(len(test_case)):
+  print(i+1 , is_square(test_case[i]))
