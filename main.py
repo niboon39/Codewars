@@ -545,7 +545,7 @@ def fibonacci (n):
     # print(fn,i)
   return fn[n]
 
-print(fibonacci(10))
+# print(fibonacci(10))
 
 def nth_fib (n):
   f = []
@@ -740,6 +740,25 @@ def is_square(n):
       return False
 # print(is_square(26))
 
-test_case = [-1 , 0 , 3 , 4 , 25 , 26]
-for i in range(len(test_case)):
-  print(i+1 , is_square(test_case[i]))
+# test_case = [-1 , 0 , 3 , 4 , 25 , 26]
+# for i in range(len(test_case)):
+#   print(i+1 , is_square(test_case[i]))
+
+
+import math as m 
+
+def solveit(vi, vf, t):
+  # your code goes here
+  print(vi , vf , t)
+  if vi > vf : return []
+  else:
+      a = (vf - vi)/t
+      d = vi*t + 0.5 * a * (t**2)
+      # a = str(a)
+      # d = str(d)
+      return [round(a , 2), round(d,2)]
+
+# print(solveit(34.5,55.1,2.47))
+
+
+
