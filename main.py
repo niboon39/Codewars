@@ -1,6 +1,7 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
 from cgi import test
+from hashlib import new
 from operator import index, ne
 
 def seven_ate9(str_):
@@ -761,4 +762,9 @@ def solveit(vi, vf, t):
 # print(solveit(34.5,55.1,2.47))
 
 
+def modify_multiply(st, loc, num):
+  new_str = st.split(" ")
+  result = (new_str[loc]+'-')*num
+  return result[:len(result)-1:]
 
+print(modify_multiply("This is a string" , 3 , 5))
