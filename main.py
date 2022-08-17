@@ -2,7 +2,9 @@
 # 7kyu
 from cgi import test
 from hashlib import new
+from http.client import REQUEST_URI_TOO_LONG
 from operator import index, ne
+from pickle import FALSE
 
 def seven_ate9(str_):
     while '797' in str_:
@@ -767,4 +769,26 @@ def modify_multiply(st, loc, num):
   result = (new_str[loc]+'-')*num
   return result[:len(result)-1:]
 
-print(modify_multiply("This is a string" , 3 , 5))
+# print(modify_multiply("This is a string" , 3 , 5))
+
+
+
+''' Split string '''
+def solution_split_sting(s):
+  re_list = [] # result of list 
+
+  if len(s) % 2 == 0 :
+    for i in range(len(s)+1):
+      if i>=2 and i % 2 == 0 :
+        ss = s[i-2]+s[i-1]
+        re_list.append(ss)
+  else:
+    for i in range(len(s)+1):
+      if i>=2 and i % 2 == 0 :
+        ss = s[i-2]+s[i-1]
+        re_list.append(ss)
+    sso = s[len(s)-1] + '_'
+    re_list.append(sso)
+  return re_list
+
+print(solution_split_sting("abc"))
