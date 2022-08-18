@@ -791,4 +791,22 @@ def solution_split_sting(s):
     re_list.append(sso)
   return re_list
 
-print(solution_split_sting("abc"))
+# print(solution_split_sting("abcsdfgh")) 
+
+
+def amount_of_pages(summary):
+  buffer_str = ""
+  c = 0 
+  for i in range(1,summary+1):
+      if len(buffer_str) == summary:
+        break 
+      else:
+        buffer_str+=str(i)
+        c=i
+  return c
+
+
+# print(amount_of_pages(1095))
+
+# Next kata : https://www.codewars.com/kata/56b2abae51646a143400001d
+  
