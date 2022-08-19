@@ -5,6 +5,7 @@ from hashlib import new
 from http.client import REQUEST_URI_TOO_LONG
 from operator import index, ne
 from pickle import FALSE
+from tkinter import Y
 
 def seven_ate9(str_):
     while '797' in str_:
@@ -809,4 +810,72 @@ def amount_of_pages(summary):
 # print(amount_of_pages(1095))
 
 # Next kata : https://www.codewars.com/kata/56b2abae51646a143400001d
-  
+
+import math as m 
+def Hawadum(p):
+  '''
+  weekday : 22 $ 
+  weekend : 27.5 $
+  Input : [Day , hr]
+ '''
+  weekDays = ['Mon' , 'Tue' , 'Wed' , 'Thu' , 'Fri']
+  weekEnd  = ['Sun' , 'Sat']
+  Rate = [22 , 27.5] # [Rate in weekday , Rate in weekend]
+  sum = 0 
+  if p[0] in weekDays:
+    if 1 == len(p[1]): sum += int(p[1]) * Rate[0] 
+    else: sum+= (int(p[1][0]) * Rate[0] ) + ((int(p[1][2::]) * Rate[0]  ) / 60 )
+
+  elif p[0] in weekEnd : 
+    if 1 == len(p[1]): sum += int(p[1]) *Rate[1]  
+    else: sum+= (int(p[1][0]) * Rate[1]) + ((int(p[1][2::]) * Rate[1] ) / 60 )
+
+  print(f'(Day,Hr) : {p[0]} , {p[1]}  \t -> {m.floor(sum)} $' )
+  return m.floor(sum)
+
+# print(Hawadum( ['Mon' , 5.45] ))
+
+pay2week = [ ['Tue' , '5.45'] , 
+             ['Wed' , '5.30'] , 
+             ['Fri' , '6'] , 
+             ['Sat' , '4.40'],
+             ['Tue' , '5.45'],
+             ['Wed' , '5.49'],
+             ['Fri' , '6.20'],
+             ['Sat' , '6.35'],
+]
+# Total_sum = 0
+# for i in pay2week : 
+#   Total_sum += Hawadum(i)
+# print(f'Total : {Total_sum} $')
+
+
+
+def double_char(s):
+  buff = ''
+  for i in range(len(s)):
+    buff += s[i]*2
+  return buff
+
+# print(double_char("String"))
+def fac(n):
+  return 1 if (n==1 or n==0) else n * fac(n - 1)
+
+def zeros(n):
+  # c=1
+  # for i in range(2,n+1): c*=i
+  # cc = 0 
+  # for i in range(len(str(c))-1 , 0 , -1):
+  #   # print(buff[i] , end=" ")
+  #   if int(str(c)[i]) != 0 : 
+  #     break
+  #   else:
+  #     cc+=1
+  # return cc
+  c = 0 
+  while n!=0 :
+    c+= n//5 
+    n //= 5 
+  return c
+
+print(zeros(6))
