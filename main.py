@@ -2,7 +2,8 @@
 # 7kyu
 from cgi import test
 from hashlib import new
-from http.client import REQUEST_URI_TOO_LONG
+from http.client import REQUEST_URI_TOO_LONG, CannotSendHeader
+from msilib.schema import Error
 from operator import index, ne
 from pickle import FALSE
 from tkinter import Y
@@ -812,6 +813,61 @@ def amount_of_pages(summary):
 # Next kata : https://www.codewars.com/kata/56b2abae51646a143400001d
 
 import math as m 
+def Hour_Calculator(sTOe):
+  # start_time = '05:30 AM'
+  # end_time   = '09:40 PM'
+  start_time = sTOe[0]
+  end_time = sTOe[1]
+  st_type = start_time.split(" ")
+  ed_type = end_time.split(" ")
+  st_buffer = st_type[0]
+  ed_buffer = ed_type[0]
+  st_time = st_buffer.split(":") # array[0] -> hr , array[1] -> min
+  ed_time = ed_buffer.split(":") # array[0] -> hr , array[1] -> min
+  result_time =[]
+  Case_PM = ['PM' , 'pM' , 'Pm' , 'pm']
+  Case_AM = ['AM' , 'aM' , 'Am' , 'am']
+  # print(st_time , st_type[1])
+  # print(ed_time , ed_type[1])
+  # print(st_type[1] in Case_AM , ed_type[1] in Case_PM)
+  try:
+    if st_type[1] in Case_PM and ed_type[1] in Case_PM: 
+      result_time.append( int(ed_time[0]) - int(st_time[0]) ) # hr
+      if st_time[0] > ed_time[0]:
+        result_time[0] += 24 
+
+      if int(st_time[1]) > int(ed_time[1]) : 
+        result_time[0] = result_time[0] -1 
+        result_time.append( 60- (int(st_time[1]) - int(ed_time[1])) )
+      else:
+        result_time.append( int(ed_time[1]) - int(st_time[1]) )
+
+    elif st_type[1] in Case_AM and ed_type[1] in Case_AM:
+      result_time.append( int(ed_time[0]) - int(st_time[0]) ) # hr 
+      if st_time[0] > ed_time[0]:
+        result_time[0] += 24 
+
+      if int(st_time[1]) > int(ed_time[1]) : 
+        result_time[0] = result_time[0] -1 
+        result_time.append( 60- (int(st_time[1]) - int(ed_time[1])) )
+      else:
+        result_time.append( int(ed_time[1]) - int(st_time[1]) )
+
+    elif (st_type[1] in Case_AM and ed_type[1] in Case_PM) or ( st_type[1] in Case_PM and ed_type[1] in Case_AM )  : 
+      result_time.append( int(ed_time[0]) + (12 - int(st_time[0])) ) # hr 
+      if int(st_time[1]) > int(ed_time[1]) : 
+        result_time[0] = result_time[0] -1 
+        result_time.append( 60- (int(st_time[1]) - int(ed_time[1])) )
+      else:
+        result_time.append( int(ed_time[1]) - int(st_time[1]) )
+    # print(result_time)
+    return f'{result_time[0]} hrs {result_time[1]} mins' , f'{result_time[0] + (result_time[1]/100)} hrs'
+
+  except IndexError :
+    return 'Can not calculate. Please check your time.'
+
+# print(Hour_Calculator( ['05:30 PM' , '09:40 PM'] ))
+
 def Hawadum(p):
   '''
   weekday : 22 $ 
@@ -835,14 +891,14 @@ def Hawadum(p):
 
 # print(Hawadum( ['Mon' , 5.45] ))
 
-pay2week = [ ['Tue' , '5.45'] , 
-             ['Wed' , '5.30'] , 
-             ['Fri' , '6'] , 
-             ['Sat' , '4.40'],
-             ['Tue' , '5.45'],
-             ['Wed' , '5.49'],
-             ['Fri' , '6.20'],
-             ['Sat' , '6.35'],
+pay2week = [ ['Tue' , '5.49'] , 
+             ['Thu' , '6'] , 
+             ['Fri' , '6.46'] , 
+             ['Sat' , '6.27'],
+             ['Sun' , '5.44'],
+            #  ['Wed' , '5.49'],
+            #  ['Fri' , '6.20'],
+            #  ['Sat' , '6.35'],
 ]
 # Total_sum = 0
 # for i in pay2week : 
@@ -878,4 +934,24 @@ def zeros(n):
     n //= 5 
   return c
 
-print(zeros(6))
+# print(zeros(6))
+
+
+
+def powers_of_two(n):
+    return [2**i for i in range(0,n+1)]
+
+# print(powers_of_two(4))
+
+sstr = '&$%'
+def is_uppercase(inp):
+    c = 0 
+    Not = ['!' , '@' , "$" , "%" , "^" , "&" , "*" , "(" , ")" , "_" , "-" , "+"]
+    for i in range(len(inp)):
+      if inp[i].isupper() or inp[i] == ' ' or (inp[i] in Not):
+        c+=1
+    print(c , len(inp))
+    return c == len(inp)
+
+# print(is_uppercase(sstr))
+
