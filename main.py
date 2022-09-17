@@ -1202,4 +1202,15 @@ def knightVsKing (kt_pos, kg_pos):
         return "Knight"
     else:
         return "None"
- 
+
+
+def find_missing_letter(chars):
+  list_result = [i for i in range(ord(chars[0])  , ord(chars[len(chars)-1])+1 )] 
+  list_letter = []
+  for i in chars:
+    list_letter.append(ord(i))
+  # print(list_letter)
+
+  for k , j in zip(list_result , list_letter):
+    if k != j : 
+      return chr(k)
