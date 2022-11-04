@@ -1213,3 +1213,33 @@ def find_missing_letter(chars):
 
 # print( find_missing_letter( ['a' , 'b' , 'd' , 'e'] ) )
 
+# x = [0.0, 0.19, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25]
+# s = 15
+
+def max_list(lst):
+  max = lst[0]
+  for i in range(len(lst)):
+    if max >= lst[i]:
+      pass
+    else:
+      max = lst[i]
+  return max 
+
+def gps (s , x):
+  dis = 0 
+  result = []
+  if x == [] :
+    return 0 
+  else:
+    for i in range(len(x)-1):
+      # print(i+1 , i)
+      dis = ((x[i+1] - x[i]) * 3600 ) / s 
+      result.append(dis)
+      dis = 0 
+    if result == [] :
+      return 0 
+    else:
+      return int(max_list(result))
+
+# print(gps(s,x))
+
