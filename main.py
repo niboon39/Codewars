@@ -1243,3 +1243,40 @@ def gps (s , x):
 
 # print(gps(s,x))
 
+
+
+def one_two_three(n):
+  ans = []
+  s_num = ""
+  if len(str(n)) == 1 and n!= 0 : 
+    for i in range(n):
+      s_num += "1"
+    ans.append(n)
+    ans.append(int(s_num))
+  elif len(str(n)) >= 2:
+    for i in range(n):
+      s_num +="1"
+    ss = str(n)
+    # print(ss[-1] , "last")
+    if ss[-1] == "0":
+      last_ss = int(ss)
+    else:
+      last_ss = int(ss[-1])
+    buffer_ss = ""
+    # last_ss = 9
+    for i in range(1, len(s_num)+1 , 1) : 
+      if i % last_ss == 0 :
+        buffer_ss+=str(last_ss)
+        # buffer_ss +="9"
+      elif i >= len(s_num):
+        buffer_ss+=str(len(s_num)%last_ss)
+    # print(buffer_ss)
+    ans.append(int(buffer_ss))
+    ans.append(int(s_num))
+  elif n==0:
+    return [0,0]
+
+  return ans
+  # print(s_num)
+
+print(one_two_three(14))
