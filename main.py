@@ -812,7 +812,9 @@ def amount_of_pages(summary):
 
 # Next kata : https://www.codewars.com/kata/56b2abae51646a143400001d
 
+''' IMPORT LIBRARY '''
 import math as m 
+
 def Hour_Calculator(sTOe):
   # start_time = '05:30 AM'
   # end_time   = '09:40 PM'
@@ -861,12 +863,11 @@ def Hour_Calculator(sTOe):
       else:
         result_time.append( int(ed_time[1]) - int(st_time[1]) )
     # print(result_time)
-    return f'{result_time[0]} hrs {result_time[1]} mins' , f'{result_time[0] + (result_time[1]/100)} hrs'
+    # print(f'{result_time[0]} hrs {result_time[1]} mins' , f'{result_time[0] + (result_time[1]/100)} hrs')
+    return result_time[0] + (result_time[1]/100)
 
   except IndexError :
     return 'Can not calculate. Please check your time.'
-
-# print(Hour_Calculator( ['05:30 AM' , '09:40 PM'] ))
 
 def Hwadam(p):
   '''
@@ -915,10 +916,11 @@ pay2week = [
             #  ['Sun' , ['04:00 PM' , '09:12 PM']],
             
 ]
-# Total_sum = 0
-# for i in pay2week : 
-#   Total_sum += Hwadam(i)
-# print(f'Total : $ {Total_sum}')
+
+Total_sum = 0
+for i in pay2week : 
+  Total_sum += Hwadam(i)
+print(f'Total : $ {Total_sum}')
 
 
 
@@ -1279,4 +1281,4 @@ def one_two_three(n):
   return ans
   # print(s_num)
 
-print(one_two_three(14))
+# print(one_two_three(14))
