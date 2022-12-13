@@ -917,10 +917,10 @@ pay2week = [
             
 ]
 
-Total_sum = 0
-for i in pay2week : 
-  Total_sum += Hwadam(i)
-print(f'Total : $ {Total_sum}')
+# Total_sum = 0
+# for i in pay2week : 
+#   Total_sum += Hwadam(i)
+# print(f'Total : $ {Total_sum}')
 
 
 
@@ -1282,3 +1282,31 @@ def one_two_three(n):
   # print(s_num)
 
 # print(one_two_three(14))
+
+def count_list(l):
+  buff_l = []
+  index=[]
+  dup=0
+  for i in range(len(l)):
+    for j in l:
+      if j == l[i]:
+        dup+=1 
+    buff_l.append(dup)
+    dup=0
+  # print(buff_l)
+  for i in range(len(buff_l)):
+    if buff_l[i] ==1:
+      index.append(i)
+  # print(index)
+  return index
+
+# print(count_list())
+
+def sum_no_duplicates(l):
+  undup=0
+  c_int = count_list(l)
+  for i in c_int:
+    undup+=l[i]
+  return undup
+
+# print(sum_no_duplicates())
