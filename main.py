@@ -931,8 +931,14 @@ def double_char(s):
   return buff
 
 # print(double_char("String"))
-def fac(n):
-  return 1 if (n==1 or n==0) else n * fac(n - 1)
+def fac_recursive(n):
+  return 1 if (n==1 or n==0) else n * fac_recursive(n - 1)
+
+def fac_iterative(n):
+  result = 1
+  for i in range(2, n + 1):
+    result *= i
+  return result
 
 def zeros(n):
   # c=1
@@ -1300,6 +1306,16 @@ def count_list(l):
   # print(index)
   return index
 
+def count_list(l):
+  from collections import defaultdict
+
+  counts = defaultdict(int)
+  for elem in l:
+    counts[elem] += 1
+
+  return [i for i, elem in enumerate(l) if counts[elem] == 1]
+
+
 # print(count_list())
 
 def sum_no_duplicates(l):
@@ -1309,4 +1325,6 @@ def sum_no_duplicates(l):
     undup+=l[i]
   return undup
 
-# print(sum_no_duplicates())
+# print(sum_no_duplicates(l=[1,1,2,3]))
+
+
