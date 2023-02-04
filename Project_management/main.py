@@ -9,7 +9,8 @@ durations = [5, 7, 10, 14, 7, 5, 3, 5, 2, 5]
 costs = [7250, 15000, 73000, 44000, 22000, 29000, 7500, 3000, 22000, 44000]
 
 # Calculate the expected duration and cost using the Three Point Estimation formula
-expected_durations = [np.mean([durations[i]-2, durations[i], durations[i]+2]) for i in range(len(durations))]
+# expected_durations = [np.mean([durations[i]-2, durations[i], durations[i]+2]) for i in range(len(durations))]
+expected_durations = [(durations[i]-1 + (4*durations[i]) + durations[i]+2)/6  for i in range(len(durations))]
 expected_costs = [np.mean([costs[i]-costs[i]/2, costs[i], costs[i]+costs[i]/2]) for i in range(len(costs))]
 
 # Plot the expected duration and cost
