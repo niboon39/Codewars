@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ibis Calculate credits</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+      
+      th {
+        background-color: #ddd;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculate Credits</h1>
+    <form action="/" method="POST">
+      <label for="num-rooms">How many rooms:</label>
+      <input type="number" id="num-rooms" name="num_rooms" min="1" max="100"><br><br>
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Task</th>
+            <th>Credits</th>
+          </tr>
+        </thead>
+        <tbody id="rooms"></tbody>
+      </table>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    {% if credits %}
+      <h2>Results:</h2>
+      <p>Before credits: {{ before_credits }}</p>
+      <p>After credits: {{ after_credits }}</p>
+      <p>Minutes to hours: {{ minutes_to_hr }}</p>
+    {% endif %}
+    <script>
+      const numRoomsInput = document.getElementById('num-rooms');
+      const roomsContainer = document.getElementById('rooms');
+      
+      numRoomsInput.addEventListener('input', (event) => {
+        const numRooms = parseInt(event.target.value);
+        roomsContainer.innerHTML = '';
+        for (let i = 1; i <= numRooms; i++) {
+          const roomInput = document.createElement('input');
+          roomInput.type = 'number';
+          roomInput.name = `room_${i}`;
+          
+          const taskSelect = document.createElement('select');
+          taskSelect.name = `task_${i}`;
+          const stayOverOption = document.createElement('option');
+          stayOverOption.value = 'Stay over';
+          stayOverOption.textContent = 'Stay over';
+          taskSelect.appendChild(stayOverOption);
+          const departureCleanOption = document.createElement('option');
+          departureCleanOption.value = 'Departure Clean';
+          departureCleanOption.textContent = 'Departure Clean';
+          taskSelect.appendChild(departureCleanOption);
+          const stayoverFullLinenOption = document.createElement('option');
+          stayoverFullLinenOption.value = 'StayoverFullLinen';
+          stayoverFullLinenOption.textContent = 'StayoverFullLinen';
+          taskSelect.appendChild(stayoverFullLinenOption);
+          
+          const creditsInput = document.createElement('input');
+          creditsInput.type = 'number';
+          creditsInput.name = `credit_${i}`;
+          
+          const row = document.createElement('tr');
+          const roomCell = document.createElement('td');
+          const taskCell = document.createElement('td');
+          const creditsCell = document.createElement('td');
+          
+          roomCell.appendChild(roomInput);
+          taskCell.appendChild(taskSelect);
+          creditsCell.appendChild(creditsInput);
+          
+          row.appendChild(roomCell);
+          row.appendChild(taskCell);
+          row.appendChild(creditsCell);
+          
+          roomsContainer.appendChild(row);
+        }
+      });
+    </script>
+  </body>
+</html>
