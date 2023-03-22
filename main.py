@@ -1327,4 +1327,24 @@ def sum_no_duplicates(l):
 
 # print(sum_no_duplicates(l=[1,1,2,3]))
 
+from tqdm import tqdm , trange
+from time import sleep
+
+# text = ""
+# for char in tqdm(["a" , "b" , "c" , "d"]):
+#   sleep(0.25)
+#   text += char 
+# print(text)
+# c= 0 
+# for i in trange(1 , 101, 1):
+#   c+=i 
+#   sleep(0.03)
+  
+# print(c)
+
+
+# pbar = tqdm(["a", "b", "c", "d"])
+# for char in pbar:
+#     sleep(0.5)
+#     pbar.set_description("Processing %s" % char)
 
