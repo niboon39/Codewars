@@ -1,12 +1,14 @@
-﻿Room,Task,Credits,,,
-1406,Stay over,15,,,Departure Clean
-1408,Departure Clean,25,,,StayoverFullLinen
-1409,StayoverFullLinen,25,,,Stay over
-1410,Stay over,15,,,
-1411,Stay over,15,,,
-1413,Departure Clean,25,,,
-1416,Departure Clean,25,,,
-1417,Departure Clean,25,,,
-1514,Departure Clean,25,,,
-1515,Departure Clean,25,,,
-1516,Departure Clean,25,,,
+Room,Task,Credits,,,
+1501,Departure Clean,35,,,Departure Clean
+1502,Departure Clean,30,,,StayoverFullLinen
+1506,Departure Clean,25,,,Stay over
+1509,Stay over,15,,,
+1510,Departure Clean,25,,,
+1511,Departure Clean,25,,,
+1512,Stay over,20,,,
+1517,Departure Clean,25,,,
+1602,Stay over,20,,,
+1605,Stay over,15,,,
+1608,Stay over,15,,,
+1617,Departure Clean,25,,,
+1708,Departure Clean,25,,,
