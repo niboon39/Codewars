@@ -1,9 +1,9 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
 from cgi import test
-from hashlib import new
-from http.client import REQUEST_URI_TOO_LONG, CannotSendHeader
-from msilib.schema import Error
+# from hashlib import new
+# from http.client import REQUEST_URI_TOO_LONG, CannotSendHeader
+# from msilib.schema import Error
 from operator import index, ne
 from pickle import FALSE
 from tkinter import Y
@@ -1348,3 +1348,116 @@ from time import sleep
 #     sleep(0.5)
 #     pbar.set_description("Processing %s" % char)
 
+
+
+cent_coin = {0.5 : 5 ,
+             0.2 : 10,
+             0.1 : 5 ,
+             0.05: 5 , }
+
+dollar_coin = {2 : 25 ,
+               1 : 20, } 
+
+notes  = {100 : 2 ,
+           50 :  0 ,
+           20 : 2 ,
+           10 : 2 ,
+           5  : 2 ,}
+
+Guest = float(input("Enter the price : "))
+while (Guest > 0.01):
+  if 100 > Guest :  
+      if Guest <= 99 or Guest >= 50:
+        if notes[50] != 0 :
+          buff_guest = Guest # Set the price equal buff_guest 
+          buff_guest //= 50 
+          notes[50] -= buff_guest # update notes 50 
+          Guest -= 50 * buff_guest
+          Guest = round(Guest,2)
+          print("\t50   Dollar : ",int(buff_guest) , Guest)
+        else : 
+          if 49 >= Guest or Guest >= 20 :
+            if notes[20] !=0 : 
+              buff_guest = Guest # Reset the price 
+              buff_guest //= 20 
+              notes[20] -= int(buff_guest) # update notes 20 
+              Guest -= 20 * buff_guest 
+              Guest = round(Guest,2)
+              print("\t20   Dollar : ",int(buff_guest) , Guest)
+            if 19 >= Guest or Guest >= 10:
+                if notes[10] != 0 : 
+                  buff_guest = Guest 
+                  buff_guest //= 10 
+                  notes[10] -= int(buff_guest)
+                  Guest -= 10 * buff_guest
+                  Guest = round(Guest,2)
+                  print("\t10   Dollar : ",int(buff_guest) , Guest)
+                if 9 >= Guest or Guest >= 5 : 
+                  if notes[5] !=0 : 
+                    buff_guest = Guest 
+                    buff_guest //= 5 
+                    notes[5] -= int(buff_guest)
+                    Guest -= 5 * buff_guest
+                    Guest = round(Guest,2)
+                    print("\t 5   Dollar : ",int(buff_guest) , Guest)
+                  if 4 >= Guest or Guest >= 2 : 
+                      if dollar_coin[2] !=0 : 
+                        buff_guest = Guest 
+                        buff_guest //= 2 
+                        dollar_coin[2] -= int(buff_guest)
+                        Guest -= 2 * buff_guest
+                        Guest = round(Guest,2)
+                        print("\t 2   Dollar : ",int(buff_guest) , Guest)
+                      if 1 >= Guest : 
+                        if dollar_coin[1] != 0 : 
+                          buff_guest = Guest 
+                          buff_guest //= 1 
+                          dollar_coin[1] -= int(buff_guest)
+                          Guest -= 1 * buff_guest
+                          Guest = round(Guest,2)
+                          print("\t 1   Dollar : ",int(buff_guest) , Guest)
+                        if 0.9 >= Guest or Guest >= 0.5 : 
+                            if cent_coin[0.5] != 0 : 
+                              buff_guest = Guest 
+                              buff_guest //= 0.5 
+                              cent_coin[0.5] -= int(buff_guest)
+                              Guest -= 0.5 * buff_guest
+                              Guest = round(Guest,2)
+                              print("\t0.5   Cents : ",int(buff_guest) , Guest)
+                            if 0.4 >= Guest or Guest >= 0.2:
+                              if cent_coin[0.2] != 0 : 
+                                buff_guest = Guest 
+                                buff_guest //= 0.2 
+                                cent_coin[0.2] -= int(buff_guest)
+                                Guest -= 0.2 * buff_guest
+                                Guest = round(Guest,2)
+                                print("\t0.2   Cents : ",int(buff_guest) , Guest)
+                              if 0.1 >= Guest : 
+                                  if cent_coin[0.1] != 0 : 
+                                    buff_guest = Guest 
+                                    buff_guest //= 0.1 
+                                    cent_coin[0.1] -= int(buff_guest)
+                                    Guest -= 0.1 * buff_guest
+                                    Guest = round(Guest,2)
+                                    print("\t0.1   Cents : ",int(buff_guest) , Guest)
+                                  if 0.09 >= Guest or Guest >= 0.05 : 
+                                    if cent_coin[0.05] != 0 : 
+                                      buff_guest = Guest 
+                                      buff_guest //= 0.05 
+                                      cent_coin[0.05] -= int(buff_guest)
+                                      Guest -= 0.05 * buff_guest
+                                      Guest = round(Guest,2)
+                                      print("\t0.05  Cents : ",int(buff_guest) , Guest)
+                                      
+  else:
+    if notes[100] != 0 : 
+      buff_guest = Guest 
+      buff_guest //= 100 
+      notes[100] -= int(buff_guest)
+      Guest -= 100 * buff_guest
+      Guest = round(Guest,2)
+      print("\t100  Dollar : ",int(buff_guest) , Guest)
+
+print(notes)
+print(dollar_coin)
+print(cent_coin)
