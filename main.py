@@ -1474,4 +1474,48 @@ def validate_hello(greetings):
             return True 
         else:
             return False 
-print(validate_hello('Hallo, wie geht\'s dir?'))
+# print(validate_hello('Hallo, wie geht\'s dir?'))
+
+
+
+def combine(*argv) :       # argv is tuple 
+  zero_dict = []
+  nonzero=[]
+
+  for i in range(len(argv)):
+    if len(argv[i]) == 0 :
+      zero_dict.append(i)
+    else:
+      nonzero.append(i)
+
+  if not nonzero:
+     return {} 
+  
+  # Set first dict 
+  first_dict = dict(argv[nonzero[0]])
+
+  for i in range(1 , len(nonzero)):
+     for k , v in argv[nonzero[i]].items(): 
+        if k in first_dict : 
+           first_dict[k] += v 
+        else:
+           first_dict[k] = v 
+
+  return first_dict    
+
+# obja = {'a' : 10 ,
+#         'b' : 20 ,
+#         'c' : 30,}
+
+# objb = {'a':3,
+#         'c':6,
+#         'd':3}
+
+# objc = {'a':5,
+#         'd':11,
+#         'e':8}
+
+# obj_ans = {}
+
+# print(combine(obja , objb , objc))
+
