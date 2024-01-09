@@ -1519,3 +1519,61 @@ def combine(*argv) :       # argv is tuple
 
 # print(combine(obja , objb , objc))
 
+
+
+# https://www.codewars.com/kata/58811e9cfd05cb5aed0000a4/train/python
+def centroid (c):
+   n = len(c)
+   r = len(c[0]) 
+   buff = 0 
+   centroid = []
+   for x in range(r) : 
+      for y in range(n): 
+        # print(x , y , c[y][x])
+        buff += c[y][x]
+      centroid.append(round(buff/n , 2))
+      buff =0
+   return centroid
+
+# print(centroid([[1,0,5], [0,1,5], [2,2,5]]))
+
+# print(len(None))
+
+
+# https://www.codewars.com/kata/52a112d9488f506ae7000b95/train/python
+def is_int_array(arr):
+   print(arr , type(arr))
+   if type(arr) != list():
+      return False 
+   elif (len(arr) == 0 or arr == [] ):
+      return True 
+   ci = 0 # count int 
+   cf = 0 # count float 
+   n = len(arr)
+   for i in arr : 
+      if (type(i) == type(int())): 
+         ci+=1 
+      if (type(i) == type(float())): 
+         if (i % 1 == 0 ):
+          cf+=1 
+   if (ci == n and cf == 0  or cf == n and ci == 0 ):
+      return True 
+   elif (ci > 0 and cf > 0):
+      return False 
+   else:
+      return False 
+   
+# https://codewars.com/kata/56c04261c3fcf33f2d000534/train/python
+def doubles(maxk : int, maxn : int) -> float :
+    force = 0 
+    for k in range(1,maxk+1): 
+       k_inv = 1/k 
+       pow = -2*k 
+       force_n = 0 
+       for n in range(2 , maxn+2):
+          # force += 1/( k* ( (n+1)**(2*k) ) )
+          force_n += n ** pow 
+       force += k_inv * force_n 
+    return force 
+
+    
