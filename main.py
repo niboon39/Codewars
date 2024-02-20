@@ -1576,4 +1576,4 @@ def doubles(maxk : int, maxn : int) -> float :
        force += k_inv * force_n 
     return force 
 
-    
+
