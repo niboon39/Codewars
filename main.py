@@ -1576,4 +1576,19 @@ def doubles(maxk : int, maxn : int) -> float :
        force += k_inv * force_n 
     return force 
 
+# a = 1 
+# print("I'm the number {a}. ".format(**locals()))
+
+
+
+def find_slope(m):
+  # sample input : [19,3,20,3]
+  # m = Y2-Y1 / X2 - X1 
+   print(m)
+   if m == []: return  "undefined"
+   try : 
+      ans = str((m[3]-m[1]) // (m[2] - m[0]))
+   except ZeroDivisionError: 
+      ans = 'undefined'
+   return ans
     
