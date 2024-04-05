@@ -1592,3 +1592,82 @@ def find_slope(m):
       ans = 'undefined'
    return ans
     
+
+
+
+    
+# n = int(input())
+# student_marks = {}
+# for _ in range(n):
+#     name, *line = input().split()
+#     scores = list(map(float, line))
+#     student_marks[name] = scores
+
+# query_name = input()
+
+# print(student_marks[query_name])
+# avg = 0 
+# for i in student_marks[query_name]: 
+#    print(i)
+#    avg += i 
+# avg /= len(student_marks[query_name])
+# print(avg)
+        
+
+def rotate(matrix, direction):
+    new_matrix = []
+
+    if direction=="clockwise":
+        for j in range(0,len(matrix[0])):
+            list_cc = []
+            for i in range(0,len(matrix)):
+                list_cc.append(matrix[i][j])
+            list_cc.reverse()
+            new_matrix.append(list_cc)
+
+    elif direction=="counter-clockwise":
+        for j in range(0,len(matrix[0])):
+            list_cc = []
+            for i in range(0,len(matrix)):
+                list_cc.append(matrix[i][j])
+            new_matrix.insert(0,list_cc)
+    else:
+        pass
+    return new_matrix
+
+# matrix = [[1,2,3],
+#           [4,5,6],
+#           [7,8,9]]
+# print(rotate(matrix ,'counter-clockwise'))
+
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+# is_pri = is_prime
+# print(is_pri(12))
+
+
+def cheeseshop(kind, *arguments, **keywords):
+    print("-- Do you have any", kind, "?")
+    print("-- I'm sorry, we're all out of", kind)
+    for arg in arguments:
+        print(arg)
+    print("-" * 40)
+    for kw in keywords:
+        print(kw, ":", keywords[kw])
+
+# cheeseshop("Limburger", "It's very runny, sir.",
+#            "It's really very, VERY runny, sir.",
+#            shopkeeper="Michael Palin",
+#            client="John Cleese",
+#            sketch="Cheese Shop Sketch")
+        
+
+
+
+
