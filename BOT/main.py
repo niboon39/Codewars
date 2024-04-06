@@ -3,14 +3,12 @@ import os
 from Windowscapture import * 
 from multiOBJ import * 
 
+''' Check path  '''
+print(os.getcwd())
 nameOfapp = "LDPlayer"
 Cap = WindowCapture(nameOfapp)
+
 screen = Cap.screenshot()
-# print(os.getcwd())
-# cv.imshow("LD" , screen)
-# cv.waitKey(0)
-# cv.destroyAllWindows()
-
-search = MultiOBJ(screen , "image\wifi.PNG", "obj")
-
-target  = search.matchTemp( method ='cv.TM_CCORR_NORMED',  Debug=True)
+search = MultiOBJ(screen , "image\g.PNG", "obj")
+target  = search.matchTemp( method='cv.TM_CCOEFF_NORMED', threshold=0.89 , showname=True , Debug=True)
+print(target)
