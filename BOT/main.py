@@ -4,11 +4,16 @@ from Windowscapture import *
 from multiOBJ import * 
 
 ''' Check path  '''
-print(os.getcwd())
+# print(os.getcwd())
 nameOfapp = "LDPlayer"
 Cap = WindowCapture(nameOfapp)
+while(1):
+    nameofscreen = nameOfapp
+    target = "obj"
+    screen = Cap.screenshot()
+    search = MultiOBJ(Path_image=screen , Path_target="image\ldst.PNG",nameOftarget=target , nameofscreen = nameofscreen)
+    target  = search.matchTemp( method='cv.TM_CCOEFF_NORMED', threshold=0.89 , showname=False , Debug=True)
+    print(target)
 
-screen = Cap.screenshot()
-search = MultiOBJ(screen , "image\g.PNG", "obj")
-target  = search.matchTemp( method='cv.TM_CCOEFF_NORMED', threshold=0.89 , showname=True , Debug=True)
-print(target)
+    if cv.waitKey(1) == ord('q'):
+        break
