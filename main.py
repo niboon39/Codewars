@@ -1667,7 +1667,45 @@ def cheeseshop(kind, *arguments, **keywords):
 #            client="John Cleese",
 #            sketch="Cheese Shop Sketch")
         
+import itertools
+class Solution:
+    def letterCombinations(self, digits: str) -> list[str]:
+        alpha = ['abc','def','ghi','jkl','mno','pqrs','tuv' , 'wxyz']
+        buff = [alpha[int(digits[i])-2] for i in range(len(digits))] # 'abc' , 'def'
+        msg = []
+        size = len(digits)
+        if size == 0 :
+            return msg
 
+        for combination in itertools.product(*buff):
+            msg.append(''.join(combination))
+        return msg
+
+# s = Solution()
+# s.letterCombinations("23")
+
+
+
+## Recursive
+
+def gen_msg(digits : str):
+    alpha = ['abc','def','ghi','jkl','mno','pqrs','tuv' , 'wxyz']
+    if len(digits) == 0 :
+        return []
+    buff = [alpha[int(digits[i])-2] for i in range(len(digits))] # 'abc' , 'def'
+    msg = []
+
+    def gen_combinations (index , current_combination):
+        if index == len(buff):
+            msg.append(current_combination)
+            return
+        for char in buff[index]:
+            gen_combinations(index +1 , current_combination+char)
+
+    gen_combinations(index=0 , current_combination="")
+    return msg
+
+# print(gen_msg("23"))
 
 
 
