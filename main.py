@@ -1,6 +1,6 @@
 # https://www.codewars.com/kata/559f44187fa851efad000087/train/python
 # 7kyu
-from cgi import test
+# from cgi import test
 # from hashlib import new
 # from http.client import REQUEST_URI_TOO_LONG, CannotSendHeader
 # from msilib.schema import Error
@@ -1708,4 +1708,135 @@ def gen_msg(digits : str):
 # print(gen_msg("23"))
 
 
+class GameCharacter:
+    speed = 1.0 # m/s
+    def __init__(self, x_pos, health, name):
+        self.x_pos = x_pos
+        self.name = [name]
+        self.health = health
 
+    def move(self, by_amount):
+        self.x_pos += by_amount
+
+    def take_damage(self, amount):
+        # print("G1")
+        self.health -= amount
+        if self.health <= 0:
+            self.health = 0
+
+    def check_is_dead(self) -> bool:
+        return self.health <= 0
+    @classmethod
+    def change_speed(cls, to_speed):
+        cls.speed = to_speed
+    def info_speed(cls):
+        print(f"{cls.speed} m/s")
+    def info_player(self):
+        print(f"Name: {self.name}, Position_X: {self.x_pos}, Health: {self.health}")
+
+class PlayerCharacter(GameCharacter):
+    def __init__(self, x_pos, health, name, num_lives) -> None:
+        super().__init__(x_pos, health, name) # Copy these 3 values in Game Character
+        self.max_health = health
+        self.num_lives = num_lives
+    def take_damage(self, amount):
+        # print("P1")
+        self.health -= amount
+        if self.health <= 0 and self.num_lives > 0:
+            self.num_lives -=1
+            self.health = self.max_health
+        else:
+            self.health = 0
+
+    def check_is_dead(self) -> bool:
+        return self.health <=0 and self.num_lives <= 0
+
+# A_pos = 0
+# A_health = 100
+# A_name = "khing"
+#
+# A = GameCharacter(A_pos, A_health, A_name)
+# A.move(25)
+# A.take_damage(59)
+# print(A.check_is_dead())
+# A.info_player()
+
+# pc = PlayerCharacter(0, 100, "khing" , 3)
+# pc1 = PlayerCharacter(0, 100, "A" , 3)
+# gc = GameCharacter(0 , 100 , "kham")
+# print(gc.info_speed())
+# pc.move(2)
+# gc.move(10)
+# pc.take_damage(100)
+# pc.take_damage(100)
+# pc.take_damage(100)
+# pc.take_damage(100)
+# gc.take_damage(40)
+# print("PC: {}  Live :  {} H : {} ".format(pc.check_is_dead() , pc.num_lives , pc.health))
+# print("GC: ", gc.check_is_dead())
+# pc.info_player()
+# gc.info_player()
+
+# gc_1 = GameCharacter(10, 100 , "K")
+# gc_2 = GameCharacter(10, 100 , "A")
+# print(GameCharacter.speed)
+# # gc_1.speed = 2.5
+# GameCharacter.change_speed(2.8)
+# print(gc_1.speed)
+# # gc_2.speed = 3.0
+# print(gc_2.speed)
+#
+# gc_1.info_speed()
+
+
+class Expense:
+    def __init__(self, date, name, amount):
+        self.date = date
+        self.name = name
+        self.amount = amount
+    def info(self):
+        print(f"{self.date}, {self.name}, {self.amount}")
+class ExpenseManager():
+    expenses = []
+    def add_expense (self, expense_data, expense_name, expense_amount):
+        expense = Expense(expense_data, expense_name, expense_amount)
+        self.expenses.append(expense)
+
+# expense_manager = ExpenseManager()
+# expense_manager.add_expense("2024-05-1" , "K" , 5000)
+# expense_manager.add_expense("2024-05-2" , "B" , 2000)
+# print(expense_manager.expenses[0].name)
+# print(expense_manager.expenses[1].name)
+
+
+
+
+op = {1 : "A",
+      2 : "B"}
+
+# print(op.get(2))
+
+
+class StateMachine:
+   def __init__(self) -> None:
+      self.state = 'S1'
+
+   def transition(self, inputValue)-> str:
+      if self.state == 'S1':
+         if inputValue == 0:
+            self.state = 'S2'
+         elif inputValue == 1:
+            self.state = 'S1'
+      elif self.state == 'S2':
+         if inputValue == 0:
+            self.state = 'S1'
+         elif inputValue == 1:
+            self.state = 'S2'
+      return self.state
+   
+machine = StateMachine()
+inputs = [1,0,0,1,1,1]
+result = []
+for inp in inputs:
+   result.append(machine.transition(inp))
+print(result)
