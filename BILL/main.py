@@ -10,77 +10,79 @@ class BankAccountApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Bank Account Manager")
+        self.root.geometry("1000x800")
+        self.root.configure(bg="#f0f0f0")
 
         # Connect to SQLite database
         self.conn = sqlite3.connect('bank_account.db')
         self.create_tables()
 
         # Account Balance
-        self.balance_label = tk.Label(root, text="Account Balance: $0.00", font=("Arial", 16))
+        self.balance_label = tk.Label(root, text="Account Balance: ฿0.00", font=("Arial", 18), bg="#f0f0f0")
         self.balance_label.grid(row=0, column=0, columnspan=4, pady=10)
 
         # Deposit Section
-        self.deposit_frame = tk.LabelFrame(root, text="Deposit", padx=10, pady=10)
+        self.deposit_frame = tk.LabelFrame(root, text="Deposit", padx=10, pady=10, bg="#f0f0f0")
         self.deposit_frame.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
 
-        self.deposit_label = tk.Label(self.deposit_frame, text="Deposit Amount:")
+        self.deposit_label = tk.Label(self.deposit_frame, text="Deposit Amount:", bg="#f0f0f0")
         self.deposit_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
 
         self.deposit_entry = tk.Entry(self.deposit_frame)
         self.deposit_entry.grid(row=0, column=1, padx=5, pady=5, sticky="w")
 
-        self.deposit_button = tk.Button(self.deposit_frame, text="Deposit", command=self.deposit_money)
+        self.deposit_button = tk.Button(self.deposit_frame, text="Deposit", command=self.deposit_money, bg="#4caf50", fg="white")
         self.deposit_button.grid(row=1, column=0, columnspan=2, pady=5)
 
         # Withdraw Section
-        self.withdraw_frame = tk.LabelFrame(root, text="Withdraw", padx=10, pady=10)
+        self.withdraw_frame = tk.LabelFrame(root, text="Withdraw", padx=10, pady=10, bg="#f0f0f0")
         self.withdraw_frame.grid(row=1, column=1, padx=10, pady=10, sticky="ew")
 
-        self.withdraw_label = tk.Label(self.withdraw_frame, text="Withdraw Amount:")
+        self.withdraw_label = tk.Label(self.withdraw_frame, text="Withdraw Amount:", bg="#f0f0f0")
         self.withdraw_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
 
         self.withdraw_entry = tk.Entry(self.withdraw_frame)
         self.withdraw_entry.grid(row=0, column=1, padx=5, pady=5, sticky="w")
 
-        self.withdraw_button = tk.Button(self.withdraw_frame, text="Withdraw", command=self.withdraw_money)
+        self.withdraw_button = tk.Button(self.withdraw_frame, text="Withdraw", command=self.withdraw_money, bg="#f44336", fg="white")
         self.withdraw_button.grid(row=1, column=0, columnspan=2, pady=5)
 
         # Upcoming Bills Section
-        self.upcoming_bills_frame = tk.LabelFrame(root, text="Upcoming Bills", padx=10, pady=10)
+        self.upcoming_bills_frame = tk.LabelFrame(root, text="Upcoming Bills", padx=10, pady=10, bg="#f0f0f0")
         self.upcoming_bills_frame.grid(row=2, column=0, columnspan=2, padx=10, pady=10, sticky="ew")
 
-        self.bill_name_label = tk.Label(self.upcoming_bills_frame, text="Bill Name:")
+        self.bill_name_label = tk.Label(self.upcoming_bills_frame, text="Bill Name:", bg="#f0f0f0")
         self.bill_name_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
 
         self.bill_name_entry = tk.Entry(self.upcoming_bills_frame)
         self.bill_name_entry.grid(row=0, column=1, padx=5, pady=5, sticky="w")
 
-        self.bill_amount_label = tk.Label(self.upcoming_bills_frame, text="Bill Amount:")
+        self.bill_amount_label = tk.Label(self.upcoming_bills_frame, text="Bill Amount:", bg="#f0f0f0")
         self.bill_amount_label.grid(row=1, column=0, padx=5, pady=5, sticky="e")
 
         self.bill_amount_entry = tk.Entry(self.upcoming_bills_frame)
         self.bill_amount_entry.grid(row=1, column=1, padx=5, pady=5, sticky="w")
 
-        self.due_date_label = tk.Label(self.upcoming_bills_frame, text="Due Date:")
+        self.due_date_label = tk.Label(self.upcoming_bills_frame, text="Due Date:", bg="#f0f0f0")
         self.due_date_label.grid(row=2, column=0, padx=5, pady=5, sticky="e")
 
         self.due_date_entry = DateEntry(self.upcoming_bills_frame, date_pattern='yyyy-mm-dd')
         self.due_date_entry.grid(row=2, column=1, padx=5, pady=5, sticky="w")
 
-        self.add_bill_button = tk.Button(self.upcoming_bills_frame, text="Add Bill", command=self.add_upcoming_bill)
+        self.add_bill_button = tk.Button(self.upcoming_bills_frame, text="Add Bill", command=self.add_upcoming_bill, bg="#2196f3", fg="white")
         self.add_bill_button.grid(row=3, column=0, columnspan=2, pady=5)
 
         self.upcoming_bills_listbox = tk.Listbox(self.upcoming_bills_frame, height=10, width=70)
         self.upcoming_bills_listbox.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
 
-        self.pay_bill_button = tk.Button(self.upcoming_bills_frame, text="Pay Bill", command=self.pay_bill)
+        self.pay_bill_button = tk.Button(self.upcoming_bills_frame, text="Pay Bill", command=self.pay_bill, bg="#ff9800", fg="white")
         self.pay_bill_button.grid(row=5, column=0, columnspan=2, pady=5)
 
-        self.total_upcoming_label = tk.Label(self.upcoming_bills_frame, text="Total Upcoming Bills: $0.00")
+        self.total_upcoming_label = tk.Label(self.upcoming_bills_frame, text="Total Upcoming Bills: ฿0.00", bg="#f0f0f0")
         self.total_upcoming_label.grid(row=6, column=0, columnspan=2, pady=5)
 
         # Transaction History Section
-        self.history_frame = tk.LabelFrame(root, text="Transaction History", padx=10, pady=10)
+        self.history_frame = tk.LabelFrame(root, text="Transaction History", padx=10, pady=10, bg="#f0f0f0")
         self.history_frame.grid(row=3, column=0, columnspan=3, padx=10, pady=10, sticky="ew")
 
         self.day_var_hist = tk.StringVar()
@@ -107,21 +109,33 @@ class BankAccountApp:
         self.history_listbox = tk.Listbox(self.history_frame, height=15, width=100)
         self.history_listbox.grid(row=1, column=0, columnspan=3, padx=5, pady=5)
 
-        # Prediction Section
-        self.prediction_frame = tk.LabelFrame(root, text="Prediction", padx=10, pady=10)
-        self.prediction_frame.grid(row=1, column=2, rowspan=2, padx=10, pady=10, sticky="nsew")
+        # Overview Section
+        self.overview_frame = tk.LabelFrame(root, text="Overview", padx=10, pady=10, bg="#f0f0f0")
+        self.overview_frame.grid(row=1, column=2, rowspan=2, padx=10, pady=10, sticky="nsew")
 
-        self.predict_income_button = tk.Button(self.prediction_frame, text="Predict Income", command=self.predict_income)
-        self.predict_income_button.grid(row=0, column=0, padx=5, pady=5)
+        self.total_income_label = tk.Label(self.overview_frame, text="Total Income (Baht): 0.00", font=("Arial", 12), bg="#f0f0f0")
+        self.total_income_label.grid(row=0, column=0, pady=5, sticky="w")
 
-        self.predict_disbursement_button = tk.Button(self.prediction_frame, text="Predict Disbursement", command=self.predict_disbursement)
-        self.predict_disbursement_button.grid(row=1, column=0, padx=5, pady=5)
+        self.total_expenses_label = tk.Label(self.overview_frame, text="Total Expenses (Baht): 0.00", font=("Arial", 12), bg="#f0f0f0")
+        self.total_expenses_label.grid(row=1, column=0, pady=5, sticky="w")
 
-        # Graph inside Prediction Frame
-        self.figure = plt.Figure(figsize=(7, 5), dpi=100)
-        self.ax = self.figure.add_subplot(111)
-        self.canvas = FigureCanvasTkAgg(self.figure, self.prediction_frame)
-        self.canvas.get_tk_widget().grid(row=2, column=0, padx=5, pady=5)
+        self.income_transactions_label = tk.Label(self.overview_frame, text="Transactions (Income): 0", font=("Arial", 12), bg="#f0f0f0")
+        self.income_transactions_label.grid(row=2, column=0, pady=5, sticky="w")
+
+        self.expense_transactions_label = tk.Label(self.overview_frame, text="Transactions (Expenses): 0", font=("Arial", 12), bg="#f0f0f0")
+        self.expense_transactions_label.grid(row=3, column=0, pady=5, sticky="w")
+
+        self.average_income_label = tk.Label(self.overview_frame, text="Average Income/Month: 0.00", font=("Arial", 12), bg="#f0f0f0")
+        self.average_income_label.grid(row=4, column=0, pady=5, sticky="w")
+
+        self.average_expenses_label = tk.Label(self.overview_frame, text="Average Expenses/Month: 0.00", font=("Arial", 12), bg="#f0f0f0")
+        self.average_expenses_label.grid(row=5, column=0, pady=5, sticky="w")
+
+        # Graph inside Overview Frame
+        self.figure_overview = plt.Figure(figsize=(5.5, 2.5), dpi=100)
+        self.ax_overview = self.figure_overview.add_subplot(111)
+        self.canvas_overview = FigureCanvasTkAgg(self.figure_overview, self.overview_frame)
+        self.canvas_overview.get_tk_widget().grid(row=6, column=0, padx=5, pady=5)
 
         self.update_balance()
 
@@ -154,9 +168,10 @@ class BankAccountApp:
         cursor.execute('SELECT balance FROM transactions ORDER BY id DESC LIMIT 1')
         result = cursor.fetchone()
         balance = result[0] if result else 0.00
-        self.balance_label.config(text=f"Account Balance: ${balance:.2f}")
+        self.balance_label.config(text=f"Account Balance: ฿{balance:.2f}")
         self.update_history()
         self.update_upcoming_bills()
+        self.update_overview()
 
     def update_history(self, event=None):
         self.history_listbox.delete(0, tk.END)
@@ -186,7 +201,9 @@ class BankAccountApp:
         transactions = cursor.fetchall()
 
         for transaction in transactions:
-            self.history_listbox.insert(tk.END, f"{transaction[3]} - {transaction[0]}: ${transaction[1]:.2f} (Balance: ${transaction[2]:.2f})")
+            self.history_listbox.insert(tk.END, f"{transaction[3]} - {transaction[0]}: ฿{transaction[1]:.2f} (Balance: ฿{transaction[2]:.2f})")
+
+        self.update_overview()  # Update the overview based on the filtered transactions
 
     def get_month_number(self, month_name):
         datetime_object = datetime.datetime.strptime(month_name, "%B")
@@ -202,12 +219,12 @@ class BankAccountApp:
         for bill in bills:
             due_date = datetime.datetime.strptime(bill[3], "%Y-%m-%d").date()
             if due_date < datetime.date.today():
-                self.upcoming_bills_listbox.insert(tk.END, f"{bill[0]} - {bill[3]} - {bill[1]}: ${bill[2]:.2f}")
-                self.upcoming_bills_listbox.itemconfig(tk.END, {'bg':'red'})
+                self.upcoming_bills_listbox.insert(tk.END, f"{bill[0]} - {bill[3]} - {bill[1]}: ฿{bill[2]:.2f}")
+                self.upcoming_bills_listbox.itemconfig(tk.END, {'bg':'#ffcccc'})
             else:
-                self.upcoming_bills_listbox.insert(tk.END, f"{bill[0]} - {bill[3]} - {bill[1]}: ${bill[2]:.2f}")
+                self.upcoming_bills_listbox.insert(tk.END, f"{bill[0]} - {bill[3]} - {bill[1]}: ฿{bill[2]:.2f}")
             total_upcoming += bill[2]
-        self.total_upcoming_label.config(text=f"Total Upcoming Bills: ${total_upcoming:.2f}")
+        self.total_upcoming_label.config(text=f"Total Upcoming Bills: ฿{total_upcoming:.2f}")
 
     def deposit_money(self):
         amount = float(self.deposit_entry.get())
@@ -293,14 +310,137 @@ class BankAccountApp:
 
     def show_graph(self, dates, amounts, title, ylabel, average):
         self.ax.clear()
-        self.ax.plot(dates, amounts, label='Actual')
+        self.ax.plot(dates, amounts, label='Actual', marker='o')
         self.ax.axhline(y=average, color='r', linestyle='--', label=f'Average: {average:.2f}')
         self.ax.set_title(title)
         self.ax.set_xlabel('Transactions')
         self.ax.set_ylabel(ylabel)
+        self.ax.grid(True)
         self.ax.legend()
-        self.ax.grid()
         self.canvas.draw()
+
+    def update_overview(self):
+        cursor = self.conn.cursor()
+
+        # Calculate total income, total expenses, number of transactions, and averages
+        query = 'SELECT SUM(amount), COUNT(*) FROM transactions WHERE type = "Deposit"'
+        params = []
+
+        day = self.day_var_hist.get()
+        if day:
+            query += ' AND strftime("%d", timestamp) = ?'
+            params.append(day)
+
+        month = self.month_var_hist.get()
+        if month:
+            month_number = self.get_month_number(month)
+            query += ' AND strftime("%m", timestamp) = ?'
+            params.append(month_number)
+
+        year = self.year_var_hist.get()
+        if year:
+            query += ' AND strftime("%Y", timestamp) = ?'
+            params.append(year)
+
+        cursor.execute(query, params)
+        total_income, income_transactions = cursor.fetchone()
+        total_income = total_income or 0.00
+        income_transactions = income_transactions or 0
+
+        query = 'SELECT SUM(amount), COUNT(*) FROM transactions WHERE type IN ("Withdraw", "Bill Payment")'
+        params = []
+
+        if day:
+            query += ' AND strftime("%d", timestamp) = ?'
+            params.append(day)
+
+        if month:
+            month_number = self.get_month_number(month)
+            query += ' AND strftime("%m", timestamp) = ?'
+            params.append(month_number)
+
+        if year:
+            query += ' AND strftime("%Y", timestamp) = ?'
+            params.append(year)
+
+        cursor.execute(query, params)
+        total_expenses, expense_transactions = cursor.fetchone()
+        total_expenses = total_expenses or 0.00
+        expense_transactions = expense_transactions or 0
+
+        current_year = datetime.datetime.now().year
+        cursor.execute('SELECT COUNT(DISTINCT strftime("%m", timestamp)) FROM transactions WHERE type = "Deposit" AND strftime("%Y", timestamp) = ?', (current_year,))
+        months_with_income = cursor.fetchone()[0] or 1  # Avoid division by zero
+
+        cursor.execute('SELECT COUNT(DISTINCT strftime("%m", timestamp)) FROM transactions WHERE type IN ("Withdraw", "Bill Payment") AND strftime("%Y", timestamp) = ?', (current_year,))
+        months_with_expenses = cursor.fetchone()[0] or 1  # Avoid division by zero
+
+        average_income = total_income / months_with_income
+        average_expenses = total_expenses / months_with_expenses
+
+        # Update overview labels
+        self.total_income_label.config(text=f"Total Income (Baht): {total_income:.2f}")
+        self.total_expenses_label.config(text=f"Total Expenses (Baht): {total_expenses:.2f}")
+        self.income_transactions_label.config(text=f"Transactions (Income): {income_transactions}")
+        self.expense_transactions_label.config(text=f"Transactions (Expenses): {expense_transactions}")
+        self.average_income_label.config(text=f"Average Income/Month: {average_income:.2f}")
+        self.average_expenses_label.config(text=f"Average Expenses/Month: {average_expenses:.2f}")
+
+        # Update bar chart
+        self.update_bar_chart()
+
+    def update_bar_chart(self):
+        cursor = self.conn.cursor()
+
+        query = '''
+            SELECT strftime("%Y-%m", timestamp) AS month, 
+            SUM(CASE WHEN type = "Deposit" THEN amount ELSE 0 END) AS income,
+            SUM(CASE WHEN type IN ("Withdraw", "Bill Payment") THEN amount ELSE 0 END) AS expenses
+            FROM transactions
+            WHERE 1=1
+        '''
+        params = []
+
+        day = self.day_var_hist.get()
+        if day:
+            query += ' AND strftime("%d", timestamp) = ?'
+            params.append(day)
+
+        month = self.month_var_hist.get()
+        if month:
+            month_number = self.get_month_number(month)
+            query += ' AND strftime("%m", timestamp) = ?'
+            params.append(month_number)
+
+        year = self.year_var_hist.get()
+        if year:
+            query += ' AND strftime("%Y", timestamp) = ?'
+            params.append(year)
+
+        query += ' GROUP BY month ORDER BY month'
+        cursor.execute(query, params)
+
+        data = cursor.fetchall()
+
+        months = [datetime.datetime.strptime(d[0], "%Y-%m").strftime("%b %y") for d in data]
+        income = [d[1] for d in data]
+        expenses = [d[2] for d in data]
+
+        self.ax_overview.clear()
+        bar_width = 0.35
+        index = range(len(months))
+
+        self.ax_overview.bar(index, income, bar_width, label='Income', color='#4caf50')
+        self.ax_overview.bar([i + bar_width for i in index], expenses, bar_width, label='Expenses', color='#f44336')
+
+        self.ax_overview.set_title('Monthly Income and Expenses')
+        self.ax_overview.set_xlabel('Month')
+        self.ax_overview.set_ylabel('Amount (Baht)')
+        self.ax_overview.set_xticks([i + bar_width / 2 for i in index])
+        self.ax_overview.set_xticklabels(months)
+        self.ax_overview.legend()
+        self.ax_overview.grid(True)
+        self.canvas_overview.draw()
 
     def check_due_dates(self):
         cursor = self.conn.cursor()
