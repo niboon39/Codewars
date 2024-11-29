@@ -1327,9 +1327,6 @@ def sum_no_duplicates(l):
 
 # print(sum_no_duplicates(l=[1,1,2,3]))
 
-from tqdm import tqdm , trange
-from time import sleep
-
 # text = ""
 # for char in tqdm(["a" , "b" , "c" , "d"]):
 #   sleep(0.25)
@@ -1854,3 +1851,109 @@ def length_of_sequence(arr,n):
             return second - first +1
         else:
             return 0
+        
+
+
+
+def reverse( x: int) -> int:
+    string = str(x)
+    if "0" in str(x):
+        count = string.count("0")
+        x//=10**count
+        print(count,x)
+    if x < 0 :
+        x*= -1 
+        return -1 * int( str(x)[::-1] )
+    else:
+        return int( str(x)[::-1] )
+# x = 100  
+# print(reverse(x))
+
+def romanToInt(s: str) -> int:
+  roman_dict = {
+      "I" : 1,
+      "V" : 5,
+      "X" : 10,
+      "L" : 50,
+      "C" : 100,
+      "D" : 500,
+      "M" : 1000,
+  }
+  result = 0 
+  for i in range(len(s)) :
+     if i+1 < len(s) and roman_dict[s[i]] < roman_dict[s[i+1]]:
+        result -= roman_dict[s[i]]
+     else:
+        result +=  roman_dict[s[i]]
+  return result
+
+# print(romanToInt("MCMXCIV"))
+
+
+def removeDuplicates(nums: list[int]) -> int:
+      if not nums :
+          return 0 
+
+      k = 1 
+
+      for i in range(1,len(nums)):
+          if nums[i] != nums[i-1]:
+              nums[k] = nums[i]
+              k+=1
+      # print(nums)
+      return k 
+# print(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
+
+
+def fib( n: int) -> int:
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1 
+    a, b = 0, 1
+    current = 0 
+    memory = []
+    for _ in range(2, n+1):
+        current = a+b
+        a = b 
+        memory.append(a)
+        b = current
+        
+    print(sum(memory))
+      
+    return current
+
+# print(fib(5))
+
+
+def factorial(n):
+  result = 1 
+  for i in range(1,n+1): 
+      result *= i 
+  return result 
+    
+# print(factorial(10))
+
+def sum_mul(n, m):
+    if m <=0 or n <=0:
+       return "INVALID"
+    elif m==n or n>m:
+        return 0 
+    else:
+      r = [n]
+      buff = n
+      while n < m: 
+           n+=buff 
+           if n >= m:
+              break 
+           r.append(n)
+      return sum(r)
+
+          
+# print(sum_mul(2,10))
+
+       
+       
+
+
+

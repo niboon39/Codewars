@@ -44,10 +44,11 @@ def convert_files():
         progress_label.config(text=f"{progress}%")
         root.update_idletasks()
 
-    # Reset progress bar and label
+    messagebox.showinfo("Done", "All conversions completed successfully!")
+    
+    # Reset progress bar and label after clicking OK
     progress_bar['value'] = 0
     progress_label.config(text="0%")
-    messagebox.showinfo("Done", "All conversions completed successfully!")
 
 # Create the main window
 root = tk.Tk()
@@ -92,3 +93,4 @@ progress_label.pack(pady=10)
 
 # Run the application
 root.mainloop()
+

@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<p> Welcome !! </p>
+
+<!-- {% if number > 10 %}
+    <p>The number is grather than 10.</p>
+{% else %}
+    <p>The number is lower than 10.</p>
+{% endif %} -->
+
+<hr>
+
+<h1>Projects Test</h1>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Project</th>
+        <th>Votes</th>
+        <th>Ratio</th>
+        <th>Website</th>
+        <th>Created</th>
+    </tr>
+    <!-- Implement below this -->
+     {% for project in projectsList %}
+        <tr>
+            <td>{{project.id}}</td>
+            <td>{{project.title}}</td>
+            <td>{{project.vote_total}}</td>
+            <td>{{project.vote_ratio}} %</td>
+            <td><a href="{% url 'project' project.id %}">Link</a></td>
+            <td>{{project.created}}</td>
+        </tr>
+     {% endfor %}
+
+</table>
+
+{% endblock content %}

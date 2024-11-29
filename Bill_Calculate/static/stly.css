@@ -1,0 +1,150 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+h3, h6 {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Container and Layout */
+.container-fluid {
+    padding: 10px;
+}
+
+/* Card Styles */
+.card {
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+}
+
+.card-title {
+    color: #0056b3;
+    font-weight: bold;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+/* Upload Section */
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+/* Slider Section */
+.slider-section label {
+    display: block;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 5px;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Button Styles */
+button {
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-sm {
+    font-size: 0.875rem;
+}
+
+/* Image Styles */
+#processed-image {
+    display: block;
+    margin: auto;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    max-width: 70%;   /* Adjusted width to make it smaller */
+    height: auto; 
+    max-height: 150px;  /* Reduced max height to fit into a smaller area */
+}
+
+/* Items List */
+#items-list {
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.names-for-item {
+    margin-top: 5px;
+}
+
+/* Alert Box Styles */
+#result {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.alert-info {
+    background-color: #e7f3fe;
+    border-color: #b3e5fc;
+    color: #0275d8;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 5px;
+    }
+
+    .card-title {
+        text-align: center;
+    }
+
+    #save-parameters-button, #load-parameters-button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
